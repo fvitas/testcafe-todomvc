@@ -1,0 +1,27 @@
+{
+  "name": "testcafe-todomvc",
+  "version": "1.0.0",
+  "description": "testcafe todomvc example",
+  "scripts": {
+    "test": "./node_modules/.bin/testcafe chrome tests/ --speed 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fvitas/testcafe-todomvc.git"
+  },
+  "keywords": [
+    "E2E tests",
+    "UI test",
+    "testcafe",
+    "todo"
+  ],
+  "author": "Filip Vitas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fvitas/testcafe-todomvc/issues"
+  },
+  "homepage": "https://github.com/fvitas/testcafe-todomvc#readme",
+  "dependencies": {
+    "testcafe": "^0.20.3"
+  }
+}
