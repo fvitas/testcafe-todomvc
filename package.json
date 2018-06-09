@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "testcafe todomvc example",
   "scripts": {
-    "test": "./node_modules/.bin/testcafe chrome tests/ --speed 1"
+    "test:emulate": "./node_modules/.bin/testcafe 'chrome:emulation:width=800;height=600;' tests/ --speed 1",
+    "test:parallel": "./node_modules/.bin/testcafe chrome tests/ --concurrency 7",
+    "test:headless": "./node_modules/.bin/testcafe chrome:headless tests/ --concurrency 7",
+    "test:screenshot": "./node_modules/.bin/testcafe chrome tests/ --screenshot-on-fails --debug-on-fail",
+    "test": "./node_modules/.bin/testcafe chrome tests/"
   },
   "repository": {
     "type": "git",
