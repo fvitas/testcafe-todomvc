@@ -167,18 +167,6 @@ test('Complete all todos', async t => {
 
 
 test('Clear all completed todos', async t => {
-    // await t
-    //     .typeText(todoPage.input, 'write blog post about JS')
-    //     .pressKey('enter')
-    //
-    //     .typeText(todoPage.input, 'buy some beer')
-    //     .pressKey('enter')
-    //
-    //     .typeText(todoPage.input, 'watch a movie')
-    //     .pressKey('enter')
-    //
-    //     .typeText(todoPage.input, 'go to a meeting')
-    //     .pressKey('enter')
 
     let todos = ['write blog post about JS', 'buy some beer', 'watch a movie', 'go to a meeting']
 
