@@ -185,5 +185,5 @@ test('Clear all completed todos', async t => {
 
     await t
         .expect(todoPage.todoItems.count)
-        .eql(0)
+        .eql(1)
 })
