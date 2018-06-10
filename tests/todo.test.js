@@ -7,8 +7,8 @@ class TodoPage {
         this.todoItems = Selector('.todo-list li')
         this.firstTodoItem = Selector('.todo-list li:nth-child(1)')
         this.completedTodos = Selector('.completed')
-        this.toggleAll = Selector('.toggle-all')
-        this.clearCompleted = Selector('.clear-completed')
+        this.completeAll = Selector('.toggle-all')
+        this.deleteCompleted = Selector('.clear-completed')
         this.showActiveLink = Selector('[href="#/active"]')
         this.showCompletedLink = Selector('[href="#/completed"]')
     }
@@ -67,7 +67,7 @@ test('Delete todo', async t => {
 
     await t
         .hover(todoPage.firstTodoItem)
-        .click(Selector('.todo-list li:nth-child(1) .destroy'))
+        .click(todoPage.todoItems.nth(0).find('.destroy'))
 
     await t
         .expect(todoPage.todoItems.count)
@@ -88,19 +88,15 @@ test('Complete one todo', async t => {
         .pressKey('enter')
 
     await t
-        .expect(todoPage.todoItems.count)
-        .eql(2)
+        .click(todoPage.todoItems.nth(0).find('.toggle'))
 
     await t
-        .click(Selector('.todo-list li:nth-child(1) .toggle'))
-
-    await t
-        .expect(todoPage.todoItems.count)
-        .eql(2)
-
-    await t
-        .expect(todoPage.firstTodoItem.hasClass('completed'))
+        .expect(todoPage.todoItems.nth(0).hasClass('completed'))
         .ok()
+
+    await t
+        .expect(todoPage.todoItems.count)
+        .eql(2)
 })
 
 
@@ -113,7 +109,7 @@ test('Show active/completed todos', async t => {
         .pressKey('enter')
 
     await t
-        .click(Selector('.todo-list li:nth-child(1) .toggle'))
+        .click(todoPage.todoItems.nth(0).find('.toggle'))
 
     await t
         .expect(todoPage.todoItems.count)
@@ -124,7 +120,7 @@ test('Show active/completed todos', async t => {
         .click(todoPage.showActiveLink)
 
     await t
-        .expect(Selector('.todo-list li:nth-child(1)').textContent)
+        .expect(todoPage.todoItems.nth(0).textContent)
         .contains('buy some beer')
 
     // when click on show completed
@@ -158,7 +154,7 @@ test('Complete all todos', async t => {
         .eql(0)
 
     await t
-        .click(todoPage.toggleAll)
+        .click(todoPage.completeAll)
 
     await t
         .expect(todoPage.completedTodos.count)
@@ -166,7 +162,7 @@ test('Complete all todos', async t => {
 })
 
 
-test('Clear all completed todos', async t => {
+test('Delete all completed todos', async t => {
 
     let todos = ['write blog post about JS', 'buy some beer', 'watch a movie', 'go to a meeting']
 
@@ -180,8 +176,8 @@ test('Clear all completed todos', async t => {
         .eql(4)
 
     await t
-        .click(todoPage.toggleAll)
-        .click(todoPage.clearCompleted)
+        .click(todoPage.completeAll)
+        .click(todoPage.deleteCompleted)
 
     await t
         .expect(todoPage.todoItems.count)
