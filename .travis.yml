@@ -22,4 +22,4 @@ before_install:
   - sleep 3
   - stty cols 80
 
-script: npm run test:headless
+script: npm run test:ci
