@@ -173,7 +173,7 @@ test('Delete all completed todos', async t => {
 
     await t
         .expect(todoPage.todoItems.count)
-        .eql(4)
+        .eql(todos.length)
 
     await t
         .click(todoPage.completeAll)
